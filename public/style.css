@@ -67,7 +67,7 @@ header nav form i.fas.fa-search{
 /* Introduction*/
 
 .introSection{
-  background-image: url(img/fontPage.jpg);
+  background-image: url(/img/fontPage.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   grid-auto-rows: 290px;
