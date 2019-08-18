@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+  <title>GeoGlyph</title>
+  <link rel="stylesheet" href="profile.css">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.2.0/mapbox-gl.css' rel='stylesheet' />
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!--HEADER SECTION -->
+<!--========================================================================  -->
+    <!--FIRST SECTION-->
+  <nav>
+    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    <% if (user.local.email) { %>
+    <a href="/unlink/local" class="btn btn-default">Unlink</a> <% } else { %>
+    <a href="/connect/local" class="btn btn-default">Connect Local</a>
+  <% } %>
+  </nav>
+
+  <section class="row">
+    <!-- LOCAL INFORMATION -->
+    <!--TODO: Add geolocation to this section-->
+    <section class="glyphMap">
+      <section class="well">
+        <section>
+          <!-- <img src="img/atikh-bana-Ycds6emp7BA-unsplash.jpg" alt="avatar"> -->
+        </section>
+        <h3><span class="fa fa-user"></span><%= user.local.username %><br></h3>
+        <!-- Problem with userName -->
+        <% if (user.local.email) { %>
+          <p>
+            <strong>id</strong>: <%= user._id %><br>
+            <strong>email</strong>: <%= user.local.email %><br>
+            <strong>Bio</strong>:<%= user.local.bio %><br>
+            <!-- <strong>password</strong>: <%= user.local.password %> -->
+          </p>
+        <% } %>
+      </section>
+    </section>
+
+<!--========================================================================  -->
+  <!--SECOND SECTION-->
+
+  <section class="userProfile">
+    <section>
+      <h2>Glyph Map</h2>
+      <!--KW Sat: Removed form that I created and coppied the form from the geolocation project -->
+      <form action="/messages" method="POST">
+      <!-- <input type="text" placeholder="name" name="name"> -->
+        <input type="text" placeholder="What's going on?" name="quote">
+        <!--Hidden inpu box to store location of user on click-->
+        <input hidden id="location" type="text" name="locate">
+        <!--==============SEE ABOVE========================  -->
+        <button class="mapboxgl-ctrl-icon, mapboxgl-ctrl-geolocate" id="find">Find my location</button>
+        <button id="submitBtn" type="submit">Submit</button>
+        <a href="/maps">Query for Glyphs</a>
+      </form>
+
+      <ul>
+        <% for(var i=0; i<messages.length; i++) {%>
+          <li class="message">
+              <span><%= user.local.username %></span>
+              <span class="quote"><%= messages[i].quote %></span>
+              <span class="icon"><i class="fas fa-sun" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
+              <span class="icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
+          </li>
+        <% } %>
+      </ul>
+    </section>
+
+
+    <section id='map'></section>
+
+  </section>
+
+</section>
+<!--QUESTION: Am I able to run two script on the same page, is it necessary-->
+
+<script src="location.js" charset="utf-8"></script>
+<script src="main.js"></script>
+
+</body>
+</html>

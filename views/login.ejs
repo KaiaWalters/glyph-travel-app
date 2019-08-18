@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="login.css">
+  </head>
+  <body>
+
+
+    <section class="logIn">
+
+      <% if (message.length > 0) { %>
+        <div class="alert alert-danger"><%= message %></div>
+    <% } %>
+      <span>Log in to Geo Glyph</span>
+      <form action="/login" method="post">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter Email" name="email">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Enter Password" name="password">
+        </div>
+
+        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        <!-- changed button  -->
+      </form>
+      <p>Need an account? <a href="/signup">Signup</a></p>
+      <p>Or go <a href="/">home</a>.</p>
+
+    </section>
+  </body>
+</html>
