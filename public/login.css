@@ -1,79 +1,224 @@
-* {
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  text-decoration: none;
+@import url('https://fonts.googleapis.com/css?family=Mukta');
+body{
+  font-family: 'Mukta', sans-serif;
+	height:100vh;
+	min-height:550px;
+	/* background-image: url(http://www.planwallpaper.com/static/images/Free-Wallpaper-Nature-Scenes.jpg); */
+	background-repeat: no-repeat;
+	background-size:cover;
+	background-position:center;
+	position:relative;
+    overflow-y: hidden;
 }
-html{
-  font-size: 1em;
-  font-family: sans-serif;
-  background-color: #EDE1D1;
-  background-image: url(img/loginimg.jpg);
-  background-repeat: no-repeat;
-  background-size: 55%;
-  background-position: -25% 15%;
+a{
+  text-decoration:none;
+  color:#444444;
+}
+.login-reg-panel{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+	text-align:center;
+    width:70%;
+	right:0;left:0;
+    margin:auto;
+    height:400px;
+    background-image:url(/img/cta-bg2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.white-panel{
+  background-color: rgba(255,255, 255, 1);
+  height: 500px;
+  position: absolute;
+  padding: 3% 0 0 0;
+  top: -50px;
+  font-size: 2rem;
+  width: 50%;
+  right: calc(50% - 50px);
+  transition: .3s ease-in-out;
+  z-index: 0;
+  box-shadow: 0 0 15px 9px #00000096;
+}
+.login-reg-panel input[type="radio"]{
+    position:relative;
+    display:none;
+}
+.login-reg-panel{
+    color:#B8B8B8;
+}
+.login-reg-panel #label-login,
+.login-reg-panel #label-register{
+    border:1px solid #9E9E9E;
+    padding:5px 5px;
+    width:150px;
+    display:block;
+    text-align:center;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight: 600;
+    font-size: 18px;
+}
+.login-info-box{
+    width:30%;
+    padding:0 50px;
+    top:20%;
+    left:0;
+    position:absolute;
+    text-align:left;
+}
+.register-info-box{
+    width:30%;
+    padding:0 50px;
+    top:20%;
+    right:0;
+    position:absolute;
+    text-align:left;
 
 }
-section{
-  background-color: rgb(255,255,255, .8);
-  border: 3px solid lightgrey;
-  border-bottom: 3px solid lightgrey;
-  border-right: none;
-  border-top: none;
-  border-radius: 10px;
-  padding: 10px 0 0 30px;
-  margin: 40px 0 0 50%;
-  width: 45%;
-  height: 550px;
+.right-log{right:50px !important;}
+
+.login-show,
+.register-show{
+    z-index: 1;
+    display:none;
+    opacity:0;
+    transition:0.3s ease-in-out;
+    color:#242424;
+    text-align:left;
+    padding:50px;
+}
+.show-log-panel{
+    display:block;
+    opacity:0.9;
+}
+.login-show input[type="text"], .login-show input[type="password"]{
+    width: 100%;
+    display: block;
+    margin:20px 0;
+    padding: 15px;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+.login-show input[type="button"] {
+    max-width: 150px;
+    width: 100%;
+    background: #444444;
+    color: #f9f9f9;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    float:right;
+    cursor:pointer;
+}
+.login-show a{
+    display:inline-block;
+    padding:10px 0;
 }
 
-section h1{
-  font-weight: bold;
-  font-size: 40px;
-  margin: 20px 0 0 0;
+.register-show input[type="text"], .register-show input[type="password"]{
+    width: 100%;
+    display: block;
+    margin:20px 0;
+    padding: 15px;
+    border: 1px solid #b5b5b5;
+    outline: none;
+}
+.register-show input[type="button"] {
+    max-width: 150px;
+    width: 100%;
+    background: #444444;
+    color: #f9f9f9;
+    border: none;
+    padding: 10px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    float:right;
+    cursor:pointer;
+}
+.credit {
+    position:absolute;
+    bottom:10px;
+    left:10px;
+    color: #3B3B25;
+    margin: 0;
+    padding: 0;
+    font-family: Arial,sans-serif;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    z-index: 99;
+}
+a{
+  text-decoration:none;
+  color:#2c7715;
 }
 
-section input{
-  font-size: 15px;
+form {
   width: 90%;
-  height: 35px;
-  margin-top: 20px;
-  align-self: center;
+  margin: 25px 5%;
+  float: left;
+}
+.form-control {
+  display: block;
+width: 100%;
+height: 5vh;
+padding: .375rem .75rem;
+font-size: 1.2rem;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-section button{
-  padding: 10px 20px;
-}
 
-/* Image Fades ===================================== */
+p{
+  margin-top: 0;
+  margin-bottom: 0rem;
+  width: 100%;
 
-@keyframes cf4FadeInOut {
-  0% {
-    opacity:1;
-  }
-  17% {
-    opacity:1;
-  }
-  25% {
-    opacity:0;
-  }
-  92% {
-    opacity:0;
-  }
-  100% {
-    opacity:1;
-  }
 }
-
-#cf4a img:nth-of-type(1) {
-  animation-delay: 6s;
+.btn-group-lg>.btn, .btn-lg {
+    padding: 0.5rem 3rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .3rem;
 }
-#cf4a img:nth-of-type(2) {
-  animation-delay: 4s;
+.register-info-box {
+    width: 30%;
+    padding: 0 50px;
+    top: 20%;
+    color: white;
+    right: 0;
+    position: absolute;
+    text-align: left;
 }
-#cf4a img:nth-of-type(3) {
-  animation-delay: 2s;
+.login-reg-panel #label-login, .login-reg-panel #label-register {
+    border: 1px solid #9E9E9E;
+    padding: 5px 5px;
+    width: 150px;
+    display: block;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 1vh;
+    background-color: white;
+    /* color: purple; */
+    font-weight: 600;
+    font-size: 18px;
 }
-#cf4a img:nth-of-type(4) {
-  animation-delay: 0;
+.btn-lg {
+    padding: 0.5rem 3rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    width: 70%;
+    color: green;
+    background-color: white;
+    border: 2px solid grey;
+    border-radius: 0.6rem;
 }
