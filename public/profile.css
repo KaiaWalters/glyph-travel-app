@@ -1,25 +1,28 @@
 *{
   box-sizing: border-box;
 }
-#map {
+/* #map {
   border: 2px solid black;
       border-radius: 10px;
       background-color: rgb(170,218,255);
       bottom: 0;
       width: 100%;
-      position: sticky;
-      z-index: 8;
       height: 700px;
-}
+} */
 .row{
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 20% 50% 20%;
   grid-column-gap: 10px;
 }
 nav{
   height: 100px;
   width: 100%;
   background-color: lightgrey;
+}
+nav h1{
+  font-size: 2.5rem;
+  width: 50%;
+  float: left;
 }
 .userProfile section {
   border: 2px solid black;
@@ -35,7 +38,14 @@ nav{
 }
 .message{
   list-style: none;
-  color: red;
+  font-size: 1.1em;
+  color: black;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+.card ul{
+  color:red;
+  margin: 0 0 0 0;
   padding: 0 0 0 0;
 }
 .quote{
@@ -43,4 +53,70 @@ nav{
 }
 .userProfile section ul{
   padding: 0 0 0 0;
+}
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+    width: 90%;
+    margin: 5%;
+    float:left;
+}
+.grid-container {
+  padding: 0 10px 0 10px;
+  display: grid;
+   grid-template-columns: 0.5fr 1.6fr;
+   grid-template-rows: 0.3fr 1.1fr 1.6fr;
+   height: calc(100vh - 10px);
+   grid-template-areas: "nav nav" "well map" "well userPosts";
+}
+nav {
+  border:2px solid black;
+  grid-area: nav;
+ }
+ nav .btn.btn-default{
+   /* color: red; */
+   font-size: 1.1em;
+   border-radius: 3px;
+   float: right;
+   border: 2px solid black;
+   padding: 10px 30px 10px 30px;
+   margin: 0 0 0 30px;
+ }
+.map {
+  grid-area: map;
+ }
+.map section:first-of-type{
+  border: 2px solid black;
+  padding-top: 10px;
+}
+#map{
+  border:none;
+  background-color: rgb(170,218,255);
+  bottom: 0;
+  height: 400px;
+  width: 100%;
+}
+.userPosts {
+   grid-area: userPosts;
+}
+.userPosts form{
+  border: 2px solid black;
+  height:100px;
+}
+
+.well { grid-area: well; }
+.well section{
+  border: 2px solid black;
+  width: 100%;
+  height: 300px;
+  padding: 10px;
 }

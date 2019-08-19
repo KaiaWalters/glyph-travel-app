@@ -85,13 +85,16 @@ Array.from(msg).forEach(function(element) {
 //       });
 // });
 
-// LETS FIX THIS DELETE HONEY BUN!!!
+//Delete should work I just need to identify the child node the quote is in
 
 Array.from(trash).forEach(function(element) {
 
       element.addEventListener('click', function(){
+        alert("potato")
         //const name = this.parentNode.parentNode.childNodes[1].innerText
-        const quote = this.parentNode.parentNode.childNodes[3].innerText
+        const quote = this.parentNode.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].childNodes[0].childNode[1].innerText
+
+        console.log(quote)
 
         fetch('messages', {
           method: 'delete',

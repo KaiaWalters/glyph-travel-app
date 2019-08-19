@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+
 <head>
   <title>GeoGlyph</title>
   <link rel="stylesheet" href="/profile.css">
@@ -10,49 +11,58 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head/>
+
 <body>
   <!--HEADER SECTION -->
-<!--========================================================================  -->
-    <!--FIRST SECTION-->
-  <nav>
-    <a href="/logout" class="btn btn-default btn-sm">Logout</a>
-    <% if (user.local.email) { %>
-    <a href="/unlink/local" class="btn btn-default">Unlink</a> <% } else { %>
-    <a href="/connect/local" class="btn btn-default">Connect Local</a>
-  <% } %>
-  </nav>
+  <!--========================================================================  -->
+  <!--FIRST SECTION-->
+  <section class="grid-container">
 
-  <section class="row">
-    <!-- LOCAL INFORMATION -->
-    <!--TODO: Add geolocation to this section-->
-    <section class="glyphMap">
-      <section class="well">
-        <section>
-          <!-- <img src="img/atikh-bana-Ycds6emp7BA-unsplash.jpg" alt="avatar"> -->
-        </section>
+    <section class="well">
+      <section>
         <h3><span class="fa fa-user"></span><%= user.local.username %><br></h3>
         <!-- Problem with userName -->
         <% if (user.local.email) { %>
-          <p>
-            <strong>id</strong>: <%= user._id %><br>
-            <strong>email</strong>: <%= user.local.email %><br>
-            <strong>Bio</strong>:<%= user.local.bio %><br>
-            <!-- <strong>password</strong>: <%= user.local.password %> -->
-          </p>
+        <p>
+          <strong>id</strong>: <%= user._id %><br>
+          <strong>email</strong>: <%= user.local.email %><br>
+          <strong>Bio</strong>:<%= user.local.bio %><br>
+          <!-- <strong>password</strong>: <%= user.local.password %> -->
+        </p>
         <% } %>
       </section>
     </section>
 
-<!--========================================================================  -->
-  <!--SECOND SECTION-->
+    <nav>
+      <h1>Glyph Map</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+      <% if (user.local.email) { %>
+      <a href="/unlink/local" class="btn btn-default">Unlink</a> <% } else { %>
+      <a href="/connect/local" class="btn btn-default">Connect Local</a>
+      <% } %>
+    </nav>
 
-  <section class="userProfile">
-    <section>
-      <h2>Glyph Map</h2>
+
+    <!-- LOCAL INFORMATION -->
+    <!--TODO: Add geolocation to this section-->
+
+
+    <section class="map">
+      <section>
+        <span>Current Location</span>
+        <section id='map'></section>
+      </section>
+    </section>
+
+
+    <section class="userPosts">
       <!--KW Sat: Removed form that I created and coppied the form from the geolocation project -->
       <form action="/messages" method="POST">
-      <!-- <input type="text" placeholder="name" name="name"> -->
+        <!-- <input type="text" placeholder="name" name="name"> -->
         <input type="text" placeholder="What's going on?" name="quote">
+        <input type="text" placeholder="Title this post"  name="title">
         <!--Hidden inpu box to store location of user on click-->
         <input hidden id="location" type="text" name="locate">
         <!--==============SEE ABOVE========================  -->
@@ -60,69 +70,56 @@
         <button id="submitBtn" type="submit">Submit</button>
         <a href="/maps">Query for Glyphs</a>
       </form>
+
+      <% for(var i=0; i<messages.length; i++) {%>
       <div class="card gedf-card">
-                    <div class="card-header">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="mr-2">
-                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                                </div>
-                                <div class="ml-2">
-                                    <div class="h5 m-0">@LeeCross</div>
-                                    <div class="h7 text-muted">Miracles Lee Cross</div>
-                                </div>
-                            </div>
-                            <div>
-                                <div class="dropdown">
-                                    <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fa fa-ellipsis-h"></i>
-                                    </button>
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="gedf-drop1">
-                                        <div class="h6 dropdown-header">Configuration</div>
-                                        <a class="dropdown-item" href="#">Save</a>
-                                        <a class="dropdown-item" href="#">Hide</a>
-                                        <a class="dropdown-item" href="#">Report</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="card-header">
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="mr-2">
+                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+              </div>
+              <div class="ml-2">
+                <div class="h5 m-0"><%= user.local.username %></div>
+                <div class="h7 text-muted"><%= messages[i].location.coordinates %></div>
+              </div>
+            </div>
+            <div>
+              <div class="dropdown">
+                <button class="btn btn-link dropdown-toggle" type="button" id="gedf-drop1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-ellipsis-h"></i>
+                </button>
+              </div>
+            </div>
+          </div>
 
-                    </div>
-                    <div class="card-body">
-                        <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
-                        <a class="card-link" href="#">
-                            <h5 class="card-title">Lorem ipsum dolor sit amet, consectetur adip.</h5>
-                        </a>
-                        <ul>
-                          <% for(var i=0; i<messages.length; i++) {%>
-                            <li class="message">
-                                <span><%= user.local.username %></span>
-                                <span class="quote"><%= messages[i].quote %></span>
-                                <span class="icon"><i class="fas fa-sun" aria-hidden="true"></i></span>
-                                <span class="icon"><i class="fa fa-thumbs-down" aria-hidden="true"></i></span>
-                                <span class="icon"><i class="fa fa-trash" aria-hidden="true"></i></span>
-                            </li>
-                          <% } %>
-                        </ul>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-                        <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-                        <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-                    </div>
-                </div>
+        </div>
+        <div class="card-body">
+          <div class="text-muted h7 mb-2"> <i class="fa fa-clock-o"></i>10 min ago</div>
+          <a class="card-link" href="#">
+            <h5 class="card-title"><%= messages[i].title %></h5>
+          </a>
+          <ul>
+            <li class="message">
+              <span class="quote"><%= messages[i].quote %></span>
+            </li>
+          </ul>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
+          <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
+          <a href="#" class="card-link"><i class="fa fa-trash"></i>Delete</a>
+        </div>
+      </div>
+      <% } %>
     </section>
-
-
-    <section id='map'></section>
-
   </section>
 
-</section>
-<!--QUESTION: Am I able to run two script on the same page, is it necessary-->
+  <!--QUESTION: Am I able to run two script on the same page, is it necessary-->
 
-<script src="/location.js" charset="utf-8"></script>
-<script src="/main.js"></script>
+  <script src="/location.js" charset="utf-8"></script>
+  <script src="/main.js"></script>
 
 </body>
+
 </html>

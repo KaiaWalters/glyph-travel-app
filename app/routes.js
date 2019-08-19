@@ -6,6 +6,8 @@ module.exports = function(app, passport, db, ObjectId) {
     res.render('index.ejs');
   });
 
+
+
   // PROFILE SECTION =========================
 
   //there should be one get fro the same page, list of users being rendered is the one that needs to be manipulated
@@ -22,13 +24,14 @@ module.exports = function(app, passport, db, ObjectId) {
       db.collection('messages').find({
         'username': result[0].local.username
       }).toArray((err, messages) => {
-        console.log(uName, "The Rat Eats Cake");
+        console.log(messages, "The Rat Eats Cake");
         if (err) return console.log(err)
         //always check what is being passed
         res.render('profile.ejs', {
           user: req.user,
           messages: messages,
-          bio: req.bio
+          bio: req.bio,
+          title:messages.title
         })
       })
     });
@@ -49,10 +52,11 @@ module.exports = function(app, passport, db, ObjectId) {
         username: req.body.local.username
       }).toArray((err, messages) => {
         if (err) return console.log(err) //always check what is being passed
-        console.log(messages, "HEY HEY YOU YOU", messages)
+        console.log(messages, "HERE ARE MESSAGES")
         res.render('profile.ejs', {
           user: req.user,
           messages: messages,
+          title:req.title,//here
           bio: req.bio
         })
       })
@@ -105,7 +109,8 @@ module.exports = function(app, passport, db, ObjectId) {
           },
           "properties": {
             "message": md.quote,
-            "who"   : md.username //here
+            "who"   : md.username,
+            "title" : md.title//here
             //"who": md.name,
             //"location": md.location.coordinates //why arent you working?
           }
@@ -231,6 +236,7 @@ module.exports = function(app, passport, db, ObjectId) {
         bio: req.body.bio, //HERE HERE
         name: req.body.name,
         quote: req.body.quote,
+        title: req.body.title,//here
         username: uName,
         // uId     : req.session.passport.user //Here
         location: {
