@@ -69,11 +69,11 @@ map.on('load', function(e) {
   fetch(`/mapsdata`) //gets raw data about JSON Object with dtata for all of the loc map box reads puts o map
 
     .then(results => {
-      console.log("COVERTING To Json now?")
+      // console.log("COVERTING To Json now?")
       return results.json() //method
     })
     .then(mapResults => {
-      // console.log(layout.icon-image)
+      console.log("Waka WAKA - Fozi Bear", mapResults.features[0].geometry.coordinates)
       console.log(mapResults)
       console.log("JSON results from /nearbyMessages:",JSON.stringify(mapResults));
 
@@ -99,28 +99,58 @@ map.on('load', function(e) {
 
 
       });
+      map.on('click', function(e) {
+        // Query all the rendered points in the view
+        var features = map.queryRenderedFeatures(e.point, { layers: ['locations'] });
+        if (features.length) {
+          var clickedPoint = features[0];
+          // 1. Fly to the point
+          flyToStore(clickedPoint);
+          // 2. Close all other popups and display popup for clicked store
+          createPopUp(clickedPoint);
+          // 3. Highlight listing in sidebar (and remove highlight for all other listings)
+          var activeItem = document.getElementsByClassName('active');
+          if (activeItem[0]) {
+            activeItem[0].classList.remove('active');
+          }
+          // Find the index of the store.features that corresponds to the clickedPoint that fired the event listener
+          var selectedFeature = clickedPoint.properties.id;
+          var listings = document.getElementsByClassName("listing")
+
+          for (var i = 0; i < listings.length; i++) {
+            if (listings[i].dataset.id === selectedFeature) { //gets the data attr
+              listings[i].classList.add('active'); //set active on the onne looked at
+            }
+          }
+          // Select the correct list item using the found index and add the active class
+          // var listing = document.getElementById('listing-' + selectedFeatureIndex);
+          // listings.classList.add('active');
+        }
+});
     });
   })
 
+  function flyToStore(mapResults) {
+    map.flyTo({
+      center: mapResults.geometry.coordinates, //features did not exist
+      zoom: 15
+    });
+  }
+
+  function createPopUp(mapResults) {
+    var popUps = document.getElementsByClassName('mapboxgl-popup');
+    // Check if there is already a popup on the map and if so, remove it
+    if (popUps[0]) popUps[0].remove();
+
+    var popup = new mapboxgl.Popup({ closeOnClick: false })
+      .setLngLat(mapResults.geometry.coordinates)
+      .setHTML('<h3>GeoGlyph</h3>' +
+        '<h4>' + mapResults.properties.message + '</h4>')
+      .addTo(map);
+  }
+
 });
-// function flyToStore(features) {
-//   map.flyTo({
-//     center: features.geometry.coordinates,
-//     zoom: 15
-//   });
-// }
-//
-// function createPopUp(features) {
-//   var popUps = document.getElementsByClassName('mapboxgl-popup');
-//   // Check if there is already a popup on the map and if so, remove it
-//   if (popUps[0]) popUps[0].remove();
-//
-//   var popup = new mapboxgl.Popup({ closeOnClick: false })
-//     .setLngLat(features.geometry.coordinates)
-//     .setHTML('<h3>Sweetgreen</h3>' +
-//       '<h4>' + features.properties.address + '</h4>')
-//     .addTo(map);
-// }
+
 
 
 

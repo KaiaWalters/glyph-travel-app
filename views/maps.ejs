@@ -25,11 +25,12 @@
 
     <% for (i = 0; i < features.length; i++) { %>
 
-      <ul class="listing">
+      <ul data-id="<%= features[i].properties.id %>" class="listing">
         <li>
           <a class =" title item" href="#"><%= features[i].properties.who %></a>
           <%= features[i].properties.title %>
           <%= features[i].properties.message %>
+
         </li>
       </ul>
 

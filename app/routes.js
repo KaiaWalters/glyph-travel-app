@@ -110,7 +110,8 @@ module.exports = function(app, passport, db, ObjectId) {
           "properties": {
             "message": md.quote,
             "who"   : md.username,
-            "title" : md.title//here
+            "title" : md.title,
+            "id"    : md._id
             //"who": md.name,
             //"location": md.location.coordinates //why arent you working?
           }
@@ -130,7 +131,7 @@ module.exports = function(app, passport, db, ObjectId) {
     })
   }) //here
 
-
+//one renders the ejs and the other renders the results raw
   app.get('/mapsdata', isLoggedIn, function(req, res) {
     console.log(req.session, "HumDiddly Dum Dum"); //params is an empty object {}
     var uId = ObjectId(req.session.passport.user)
@@ -168,6 +169,7 @@ module.exports = function(app, passport, db, ObjectId) {
           },
           "properties": {
             "message": md.quote,
+            "id"     : md._id
           //  "who": md.name,
           //  "location": md.location.coordinates //why arent you working?
           }
@@ -276,9 +278,7 @@ module.exports = function(app, passport, db, ObjectId) {
   })
 
   app.delete('/messages', (req, res) => {
-    db.collection('messages').findOneAndDelete({
-      name: req.body.name,
-      quote: req.body.quote
+    db.collection('messages').deleteOne( { "_id" : ObjectId(req.body.id)
     }, (err, result) => {
       if (err) return res.send(500, err)
       res.send('Message deleted!')

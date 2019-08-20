@@ -94,7 +94,9 @@ Array.from(trash).forEach(function(element) {
       // alert("potato")
       //const name = this.parentNode.parentNode.childNodes[1].innerText
       // const quote = this.parentNode.parentNode.parentNode.parentNode[1].parentNode[2].parentNode.parentNode[1].parentNode[2].parentNode.childNode.innerText
-      const quote= this.parentNode.parentNode.childNodes[3].childNodes[5].childNodes[1].childNodes[1].innerHTML
+      // const quote= this.parentNode.parentNode.childNodes[3].childNodes[5].childNodes[1].childNodes[1].innerHTML
+      //client does not hold id yet
+      const id=this.dataset.id
 
       fetch('messages', {
         method: 'delete',
@@ -102,7 +104,7 @@ Array.from(trash).forEach(function(element) {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          quote : quote
+          id : id
         })
       }).then(function (response) {
         window.location.reload()
