@@ -1,4 +1,8 @@
 /*================= latest_blog_area css =============*/
+*{
+	background-color: coral;
+}
+
 .latest_blog_area {
 	background: #f9f9ff;
 }
@@ -195,18 +199,17 @@
 	background: #fff;
 }
 
+
 .blog_right_sidebar {
-	border: 1px solid #eeeeee;
-	padding: 30px;
-	.widget_title {
-		font-size: 18px;
-		line-height: 25px;
-		@extend .gradient-bg;
-		text-align: center;
-		color: #fff;
-		padding: 8px 0px;
-		margin-bottom: 30px;
-	}
+ border: 1px solid #eeeeee !important;
+ padding: 30px !important;
+ background: white !important;
+ width: 30% !important;
+ position: absolute !important;
+ left: 5px !important;
+ top: 0 !important;
+}
+
 	.search_widget {
 		.input-group {
 			.form-control {

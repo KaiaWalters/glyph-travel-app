@@ -1,122 +1,123 @@
-*{
-  box-sizing: border-box;
+html{
+  font-family: "Playfair Display", serif;
+  margin: 0;
+  padding: 0;
+  width:100%;
 }
-/* #map {
-  border: 2px solid black;
-      border-radius: 10px;
-      background-color: rgb(170,218,255);
-      bottom: 0;
-      width: 100%;
-      height: 700px;
-} */
-.row{
-  display: grid;
-  grid-template-columns: 20% 50% 20%;
-  grid-column-gap: 10px;
+.container-fluid {
+    width: 100%;
+    background: #ffb347; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #ffb347, #ffcc33) !important; /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #ffb347, #ffcc33) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 nav{
-  height: 100px;
-  width: 100%;
-  background-color: lightgrey;
+  width:100%;
+  display: block;
+  background-image: url(/img/banner/common-banner.jpg);
+  margin-bottom: 0 0 0 0;
 }
-nav h1{
-  font-size: 2.5rem;
-  width: 50%;
-  float: left;
-}
-.userProfile section {
-  border: 2px solid black;
-  padding: 0 10px 0 10px;
-  position: absolute;
-  width: 70%;
-  z-index: 20;
-  font-size: 1.2em;
-}
-.userProfile form input{
-  width: 100%;
-  height: 70px;
-}
-.message{
-  list-style: none;
-  font-size: 1.1em;
-  color: black;
-  padding: 0 0 0 0;
-  margin: 0 0 0 0;
-}
-.card ul{
-  color:red;
-  margin: 0 0 0 0;
-  padding: 0 0 0 0;
-}
-.quote{
-  width: 100%;
-}
-.userProfile section ul{
-  padding: 0 0 0 0;
-}
-.card {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 1px solid rgba(0,0,0,.125);
-    border-radius: .25rem;
-    width: 90%;
-    margin: 5%;
-    float:left;
-}
-.grid-container {
-  padding: 0 10px 0 10px;
-  display: grid;
-   grid-template-columns: 0.5fr 1.6fr;
-   grid-template-rows: 0.3fr 1.1fr 1.6fr;
-   height: calc(100vh - 10px);
-   grid-template-areas: "nav nav" "well map" "well userPosts";
-}
-nav {
-  border:2px solid black;
-  grid-area: nav;
- }
- nav .btn.btn-default{
-   /* color: red; */
-   font-size: 1.1em;
-   border-radius: 3px;
-   float: right;
-   border: 2px solid black;
-   padding: 10px 30px 10px 30px;
-   margin: 0 0 0 30px;
- }
-.map {
-  grid-area: map;
- }
-.map section:first-of-type{
-  border: 2px solid black;
-  padding-top: 10px;
-}
-#map{
-  border:none;
-  background-color: rgb(170,218,255);
-  bottom: 0;
-  height: 400px;
-  width: 100%;
-}
-.userPosts {
-   grid-area: userPosts;
-}
-.userPosts form{
-  border: 2px solid black;
-  height:100px;
+nav h1 {
+  margin-top: 0px;
+  font-size: 3em;
+  color: #fff;
+  width:50%;
 }
 
-.well { grid-area: well; }
-.well section{
-  border: 2px solid black;
+#map{
+  border: none;
+  background-color: rgb(170,218,255);
+  bottom: 0;
+  height: 420px;
+  margin:0;
   width: 100%;
-  height: 300px;
+}
+
+#input {
+  height: 65px;
+  /* color: blue; */
+  width: 100%;
+  font-size: 20px;
+  /* height: 100%; */
+}
+nav section{
+  width: 50%;
+}
+.map section{
+  border: 1px solid grey;
+  padding-top: 3px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+.row {
+  display: -ms-flexbox !important;
+  display: flex !important;
+  -ms-flex-wrap: wrap !important;
+  flex-wrap: wrap !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+.col-md-3{
+  background-color: white;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
+  padding: 20px 0 0 10px;
+}
+.col-md-6.gedf-main{
+  background-color: white;
   padding: 10px;
+  margin: 0 0 0 16px;
+  padding-top: 20px;
+}
+.btn-default.btn{
+  border: 1px solid #ffffff;
+  padding: 7px 28px;
+  color: #ffffff;
+  letter-spacing: 1px;
+  font-weight: 500;
+  margin: 20px;
+
+}
+.btn-group>.btn:first-child {
+    margin-left: 0;
+    background: purple;
+}
+.card-title {
+    margin-bottom: .75rem;
+    color: purple;
+}
+/* .profile.card-body{
+  position:fixed;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  border: 2px solid black;
+} */
+.h7 {
+  font-size: 0.8rem;
+}
+
+.gedf-wrapper {
+  margin-top: 0.97rem;
+}
+
+@media (min-width: 992px) {
+  .gedf-main {
+      padding-left: 4rem;
+      padding-right: 4rem;
+  }
+  .gedf-card {
+      margin-bottom: 2.77rem;
+  }
+}
+
+
+
+/**Reset Bootstrap*/
+.dropdown-toggle::after {
+  content: none;
+  display: none;
 }

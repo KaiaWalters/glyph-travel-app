@@ -1,29 +1,30 @@
 var sun = document.getElementsByClassName("fa-sun");
 var msg = document.getElementsByClassName("message") //here
 //var sun = document.getElementsByClassName("fa-thumbs-down");
-var trash = document.getElementsByClassName("fa-trash"); //here!
+var trash = document.getElementsByClassName("trashCan");
+var card = document.getElementsByClassName("userPosts")//here!
 // var button = document.getElementById("queryBtn");
-
-Array.from(msg).forEach(function(element) {
-
-  const isSelected = element.className.includes('selected')
-  const quote = element.getElementsByTagName("span")[1].innerText
-
-  fetch('messages', {
-      method: 'put',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({
-        isSelected: !isSelected, //guarantee send opposite is sent to db
-        quote : quote
-      })
-    })
-    .then(response => {
-      if (response.ok) return response.json()
-    })
-    .then(data => {
-      console.log(data)
-    })
-  })
+console.log(trash)
+// Array.from(msg).forEach(function(element) {
+//
+//   const isSelected = element.className.includes('selected')
+//   const quote = element.getElementsByTagName("span")[1].innerText
+//
+//   fetch('messages', {
+//       method: 'put',
+//       headers: {'Content-Type': 'application/json'},
+//       body: JSON.stringify({
+//         isSelected: !isSelected, //guarantee send opposite is sent to db
+//         quote : quote
+//       })
+//     })
+//     .then(response => {
+//       if (response.ok) return response.json()
+//     })
+//     .then(data => {
+//       console.log(data)
+//     })
+//   })
 
 //   fetch('messages', {
 //     method: 'put',
@@ -89,25 +90,24 @@ Array.from(msg).forEach(function(element) {
 
 Array.from(trash).forEach(function(element) {
 
-      element.addEventListener('click', function(){
-        alert("potato")
-        //const name = this.parentNode.parentNode.childNodes[1].innerText
-        const quote = this.parentNode.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[2].childNodes[0].childNode[1].innerText
+  element.addEventListener('click', function(){
+      // alert("potato")
+      //const name = this.parentNode.parentNode.childNodes[1].innerText
+      // const quote = this.parentNode.parentNode.parentNode.parentNode[1].parentNode[2].parentNode.parentNode[1].parentNode[2].parentNode.childNode.innerText
+      const quote= this.parentNode.parentNode.childNodes[3].childNodes[5].childNodes[1].childNodes[1].innerHTML
 
-        console.log(quote)
-
-        fetch('messages', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            quote : quote
-          })
-        }).then(function (response) {
-          window.location.reload()
+      fetch('messages', {
+        method: 'delete',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          quote : quote
         })
-      });
+      }).then(function (response) {
+        window.location.reload()
+      })
+    });
 });
 
 // SUN =====================

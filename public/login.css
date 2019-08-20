@@ -14,22 +14,24 @@ a{
   text-decoration:none;
   color:#444444;
 }
-.login-reg-panel{
+.login-reg-panel {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
-	text-align:center;
-    width:70%;
-	right:0;left:0;
-    margin:auto;
-    height:400px;
-    background-image:url(/img/cta-bg2.png);
+    text-align: center;
+    width: 70%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    height: 48vh;
+    background-image: url(/img/cta-bg2.png);
     background-repeat: no-repeat;
     background-size: cover;
 }
-.white-panel{
+
+.white-panel {
   background-color: rgba(255,255, 255, 1);
-  height: 500px;
+  height: 60vh;
   position: absolute;
   padding: 3% 0 0 0;
   top: -50px;
@@ -40,6 +42,7 @@ a{
   z-index: 0;
   box-shadow: 0 0 15px 9px #00000096;
 }
+
 .login-reg-panel input[type="radio"]{
     position:relative;
     display:none;
