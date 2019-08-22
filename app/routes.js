@@ -57,7 +57,8 @@ module.exports = function(app, passport, db, ObjectId) {
           user: req.user,
           messages: messages,
           title:req.title,//here
-          bio: req.bio
+          bio: req.bio,
+          time: req.time
         })
       })
     });
@@ -238,7 +239,8 @@ module.exports = function(app, passport, db, ObjectId) {
         bio: req.body.bio, //HERE HERE
         name: req.body.name,
         quote: req.body.quote,
-        title: req.body.title,//here
+        title: req.body.title,
+        time: ObjectId(req.body.id).getTimestamp(),//here
         username: uName,
         // uId     : req.session.passport.user //Here
         location: {

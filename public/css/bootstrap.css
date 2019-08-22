@@ -4,7 +4,18 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-
+ .section_gap_top {
+     padding-top: 75px;
+ }
+ nav img{
+   vertical-align: middle;
+ border-style: none;
+ height: 72px;
+ width: 80px;
+ }
+ .footer-area .footer_top {
+    padding-bottom: 53px;
+}
 :root {
     --blue: #007bff;
     --indigo: #6610f2;

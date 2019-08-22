@@ -219,7 +219,12 @@ header nav form i.fas.fa-search{
   margin-bottom: 30px;
 }
 
-
+nav img{
+  vertical-align: middle;
+border-style: none;
+height: 72px;
+width: 80px;
+}
 
 
 

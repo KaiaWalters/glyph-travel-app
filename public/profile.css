@@ -6,9 +6,9 @@ html{
 }
 .container-fluid {
     width: 100%;
-    background: #ffb347; /* fallback for old browsers */
-    background: -webkit-linear-gradient(to top, #ffb347, #ffcc33) !important; /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to top, #ffb347, #ffcc33) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: lightgrey; /* fallback for old browsers
+    /* background: -webkit-linear-gradient(to top, #ffb347, #ffcc33) !important; /* Chrome 10-25, Safari 5.1-6 */
+    /* background: linear-gradient(to top, #ffb347, #ffcc33) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ */ */
     padding-right: 0 !important;
     padding-left: 0 !important;
     margin-right: 0 !important;
@@ -82,9 +82,30 @@ nav section{
   margin: 20px;
 
 }
+nav img{
+  vertical-align: middle;
+border-style: none;
+height: 72px;
+width: 80px;
+}
+
+form {
+  /* border: 2px solid grey; */
+  height: 230px;
+  padding: 0 0 0 0px;
+}
+form section{
+  height: 40px;
+}
+
+.fade:not(.show) {
+    opacity: 0;
+    display: none;
+}
 .btn-group>.btn:first-child {
     margin-left: 0;
     background: purple;
+    display:none;
 }
 .card-title {
     margin-bottom: .75rem;
@@ -101,7 +122,7 @@ nav section{
 }
 
 .gedf-wrapper {
-  margin-top: 0.97rem;
+  margin-top: 0rem;
 }
 
 @media (min-width: 992px) {
