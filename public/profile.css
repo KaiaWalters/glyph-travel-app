@@ -111,6 +111,14 @@ form section{
     margin-bottom: .75rem;
     color: purple;
 }
+.container-fluid {
+    width: 100%;
+    /* padding-right: 15px; */
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 /* .profile.card-body{
   position:fixed;
   flex: 1 1 auto;
@@ -133,6 +141,7 @@ form section{
   .gedf-card {
       margin-bottom: 2.77rem;
   }
+
 }
 
 
