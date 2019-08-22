@@ -77,7 +77,7 @@ map.on('load', function(e) {
       console.log(mapResults)
       console.log("JSON results from /nearbyMessages:",JSON.stringify(mapResults));
 
-      map.loadImage('img/red-email-icon-png-27.jpg', function(error, image) {
+      map.loadImage('/img/letter.png', function(error, image) {
       if (error) throw error;
       map.addImage('cat', image);
       map.addLayer({
@@ -92,7 +92,7 @@ map.on('load', function(e) {
         },
         layout: {
           "icon-image": "cat",
-          "icon-size": 0.05
+          "icon-size": 0.10
           // 'icon-image':'{marker-symbol}-15',
           // 'icon-allow-overlap': true,
         }
@@ -144,7 +144,7 @@ map.on('load', function(e) {
 
     var popup = new mapboxgl.Popup({ closeOnClick: false })
       .setLngLat(mapResults.geometry.coordinates)
-      .setHTML('<h3>GeoGlyph</h3>' +
+      .setHTML('<h3>' + mapResults.properties.who + '</h3>' +
         '<h4>' + mapResults.properties.message + '</h4>')
       .addTo(map);
   }

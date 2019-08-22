@@ -170,7 +170,8 @@ module.exports = function(app, passport, db, ObjectId) {
           },
           "properties": {
             "message": md.quote,
-            "id"     : md._id
+            "id"     : md._id,
+            "who"   : md.username
           //  "who": md.name,
           //  "location": md.location.coordinates //why arent you working?
           }
