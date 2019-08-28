@@ -1,4 +1,4 @@
-# International Space Station Tracker: A Complex API Project
+# Geo Glyph: Personal Project
 [Link to the Project:GeoGlyph](https://geo-glyph.herokuapp.com/) 
 
 ___
